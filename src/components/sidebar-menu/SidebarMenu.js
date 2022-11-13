@@ -1,136 +1,45 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
 
 export const SidebarMenu = () => {
-  const menu = [
-    {
-      id: 0,
-      name: "Project 1",
-      icon: (
-        <FontAwesomeIcon
-          icon={faFileAlt}
-          className="text-gray-500 group-hover:text-gray-100"
-          fontSize={17}
-        />
-      ),
-    },
-    {
-      id: 1,
-      name: "Project 2",
-      icon: (
-        <FontAwesomeIcon
-          icon={faFileAlt}
-          className="text-gray-500 group-hover:text-gray-100"
-          fontSize={17}
-        />
-      ),
-    },
-    {
-      id: 2,
-      name: "Project 3",
-      icon: (
-        <FontAwesomeIcon
-          icon={faFileAlt}
-          className="text-gray-500 group-hover:text-gray-100"
-          fontSize={17}
-        />
-      ),
-    },
-    {
-      id: 3,
-      name: "Project 4",
-      icon: (
-        <FontAwesomeIcon
-          icon={faFileAlt}
-          className="text-gray-500 group-hover:text-gray-100"
-          fontSize={17}
-        />
-      ),
-    },
+  const API_URL = "http://localhost:3001/items";
 
-    {
-      id: 4,
-      name: "Project 5",
-      icon: (
-        <FontAwesomeIcon
-          icon={faFileAlt}
-          className="text-gray-500 group-hover:text-gray-100"
-          fontSize={17}
-        />
-      ),
-    },
-    {
-      id: 5,
-      name: "Project 6",
-      icon: (
-        <FontAwesomeIcon
-          icon={faFileAlt}
-          className="text-gray-500 group-hover:text-gray-100"
-          fontSize={17}
-        />
-      ),
-    },
-    {
-      id: 6,
-      name: "Project 7",
-      icon: (
-        <FontAwesomeIcon
-          icon={faFileAlt}
-          className="text-gray-500 group-hover:text-gray-100"
-          fontSize={17}
-        />
-      ),
-    },
-    {
-      id: 7,
-      name: "Project 8",
-      icon: (
-        <FontAwesomeIcon
-          icon={faFileAlt}
-          className="text-gray-500 group-hover:text-gray-100"
-          fontSize={17}
-        />
-      ),
-    },
-    {
-      id: 8,
-      name: "Project 9",
-      icon: (
-        <FontAwesomeIcon
-          icon={faFileAlt}
-          className="text-gray-500 group-hover:text-gray-100"
-          fontSize={17}
-        />
-      ),
-    },
-    {
-      id: 9,
-      name: "Project 10",
-      icon: (
-        <FontAwesomeIcon
-          icon={faFileAlt}
-          className="text-gray-500 group-hover:text-gray-100"
-          fontSize={17}
-        />
-      ),
-    },
-  ];
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(API_URL)
+      .then((response) => {
+        setItems(response.data);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  }, [setItems]);
 
   return (
-    <nav className="p-[20px] flex-grow w-inherit overflow-y-auto h-full">
+    <nav className="flex-grow w-inherit overflow-y-auto h-full">
       <ul className="h-full overflow-y-auto">
-        {menu.map((item) => {
+        {items.map(({ id, name }) => {
           return (
-            <li key={item.id} className="group mb-[12px] last:mb-0">
-              <a
-                className="py-[10px] px-[20px] transition-all flex items-center rounded-[5px] bg-slate-100 text-gray-500 hover:bg-blue-600"
-                href="#"
+            <li key={id} className="group">
+              <NavLink
+                to={`project/${id}`}
+                className="sidebar-link py-[10px] px-[20px] transition-all flex items-center border-l-[3px] text-gray-800 hover:bg-slate-100 hover:border-blue-600"
               >
-                <div className="mr-[10px]">{item.icon}</div>
-                <div className="group-hover:text-gray-100">{item.name}</div>
-              </a>
+                <div className="mr-[10px]">
+                  <FontAwesomeIcon
+                    icon={faFileAlt}
+                    className="text-gray-500"
+                    fontSize={17}
+                  />
+                </div>
+                <div>{name}</div>
+              </NavLink>
             </li>
           );
         })}
