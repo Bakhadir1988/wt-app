@@ -8,9 +8,9 @@ import { Home } from "./pages";
 export const App = () => {
   return (
     <>
+      <Header />
       <Sidebar />
-      <div className="flex flex-wrap ml-[280px]">
-        <Header />
+      <div className="ml-[250px]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="project/:id" element={<Main />} />

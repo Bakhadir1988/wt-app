@@ -2,9 +2,15 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
+import Logo from "../../assets/logo.svg";
+
 export const Header = () => {
   return (
-    <header className="shadow h-[79px] z-10 flex w-full items-center sticky top-0 left-0 bg-white">
+    <header className="shadow h-[80px] z-10 flex w-full items-center sticky top-0 border-b left-0 bg-white">
+      <div className="logo w-[250px] text-center px-[20px] h-[80px] flex bg-white border-b items-center justify-center">
+        <img className="w-[50px]" src={Logo} alt="logo" />
+      </div>
+
       <div className="flex justify-center px-[20px] flex-1">
         <div className="input-group relative flex items-stretch w-full">
           <input

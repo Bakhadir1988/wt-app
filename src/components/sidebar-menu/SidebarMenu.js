@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
 
 export const SidebarMenu = () => {
-  const API_URL = "http://localhost:3001/items";
+  const API_URL = "http://localhost:3001/project";
 
   const [items, setItems] = useState([]);
 
@@ -20,6 +20,7 @@ export const SidebarMenu = () => {
         console.log("error", error);
       });
   }, [setItems]);
+
 
   return (
     <nav className="flex-grow w-inherit overflow-y-auto h-full">
