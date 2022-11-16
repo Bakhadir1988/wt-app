@@ -1,31 +1,32 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 export const SidebarMenu = () => {
-  const API_URL = "http://localhost:3001/project";
 
-  const [items, setItems] = useState([]);
+  const API_URL = `http://localhost:3001/project`;
+
+  const [projects, setProjects] = useState([]);
 
   useEffect(() => {
     axios
       .get(API_URL)
       .then((response) => {
-        setItems(response.data);
+        setProjects(response.data);
       })
       .catch((error) => {
         console.log("error", error);
       });
-  }, [setItems]);
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <nav className="flex-grow w-inherit overflow-y-auto h-full">
       <ul className="h-full overflow-y-auto">
-        {items.map(({ id, name }) => {
+        {projects.map(({ id, name }) => {
           return (
             <li key={id} className="group">
               <NavLink

@@ -5,9 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TaskItems } from "../task-items/TaskItems";
 
 export const Main = () => {
-
   const { id } = useParams();
-
+ 
   return (
     <main className="p-[20px] w-full h-screen bg-slate-100">
       <div className="flex items-center w-full">

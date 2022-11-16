@@ -5,7 +5,9 @@ import { Sidebar } from "./components/sidebar/Sidebar";
 import { Main } from "./components/main/Main";
 import { Home } from "./pages";
 
+
 export const App = () => {
+  
   return (
     <>
       <Header />
