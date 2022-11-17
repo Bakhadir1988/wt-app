@@ -1,5 +1,5 @@
 import React from "react";
-import { SidebarMenu } from "../sidebar-menu/SidebarMenu";
+import { SidebarMenu } from "../../components/sidebar-menu/SidebarMenu";
 
 export const Sidebar = () => {
   return (
@@ -8,4 +8,3 @@ export const Sidebar = () => {
     </aside>
   );
 };
- 

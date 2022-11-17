@@ -4,7 +4,7 @@ import { faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 
-export const TaskItems = () => {
+export const TaskItem = () => {
   const { id } = useParams();
 
   const TASK_URL = `http://localhost:3001/project/${id}`;
@@ -20,7 +20,7 @@ export const TaskItems = () => {
       .catch((error) => {
         console.log("error", error);
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   return (

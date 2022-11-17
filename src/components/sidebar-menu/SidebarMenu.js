@@ -6,7 +6,6 @@ import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 export const SidebarMenu = () => {
-
   const API_URL = `http://localhost:3001/project`;
 
   const [projects, setProjects] = useState([]);
