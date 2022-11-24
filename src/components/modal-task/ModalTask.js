@@ -1,16 +1,21 @@
-import axios from "axios";
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { addTask } from "../../features/projects/projectsSlice";
 import Select from "react-select";
 
-export const ModalTask = ({ setVisible, create, users }) => {
+export const ModalTask = ({ setVisible }) => {
   const [inputTitle, setInputTitle] = useState("");
   const [textareaText, setTextareaText] = useState("");
   const [select, setSelect] = useState();
 
   const { id } = useParams();
 
-  const addTask = () => {
+  const users = useSelector((state) => state.users);
+
+  const dispatch = useDispatch();
+
+  const addTaskItem = () => {
     if (inputTitle) {
       const newTask = {
         id: Date.now(),
@@ -21,22 +26,8 @@ export const ModalTask = ({ setVisible, create, users }) => {
         director: "Рахматулин Альберт",
       };
 
-      create(newTask);
       setVisible(false);
-
-      const TASK_LIST_URL = `http://localhost:3001/project/${id}`;
-
-      axios
-        .post(TASK_LIST_URL, { items: newTask })
-        .then((response) => {
-          console.log(
-            "🚀 ~ file: ModalTask.js ~ line 32 ~ .then ~ response",
-            response
-          );
-        })
-        .catch((error) => {
-          console.log("error", error);
-        });
+      dispatch(addTask({ id, newTask }));
     }
   };
 
@@ -77,9 +68,8 @@ export const ModalTask = ({ setVisible, create, users }) => {
           </form>
         </div>
       </div>
-
       <div className="task-button flex items-center w-full left-[280px] right-[20px] p-[20px] border-t mt-auto">
-        <button onClick={addTask} type="submit" className="btn-default">
+        <button onClick={addTaskItem} type="submit" className="btn-default">
           Поставить задачу
         </button>
         <button
