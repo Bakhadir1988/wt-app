@@ -18,3 +18,5 @@ export const projectsSlice = createSlice({
 export const { addTask } = projectsSlice.actions;
 
 export default projectsSlice.reducer;
+
+
