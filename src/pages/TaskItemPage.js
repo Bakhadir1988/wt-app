@@ -16,11 +16,11 @@ export const TaskItemPage = () => {
   };
 
   /** Получение задач */
-  const TASK_URL = `http://localhost:3001/project/${id}`;
+  const TASK_LIST_URL = `http://localhost:3001/project/${id}`;
 
   useEffect(() => {
     axios
-      .get(TASK_URL)
+      .get(TASK_LIST_URL)
       .then((response) => {
         setTaskItems(response.data.items);
       })

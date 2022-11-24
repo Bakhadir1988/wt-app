@@ -1,10 +1,14 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import Select from "react-select";
 
 export const ModalTask = ({ setVisible, create, users }) => {
   const [inputTitle, setInputTitle] = useState("");
   const [textareaText, setTextareaText] = useState("");
-  const [select, setSelect] = useState()
+  const [select, setSelect] = useState();
+
+  const { id } = useParams();
 
   const addTask = () => {
     if (inputTitle) {
@@ -14,10 +18,25 @@ export const ModalTask = ({ setVisible, create, users }) => {
         content: textareaText,
         status: "Ждет выполнения",
         executor: select.label,
+        director: "Рахматулин Альберт",
       };
 
       create(newTask);
       setVisible(false);
+
+      const TASK_LIST_URL = `http://localhost:3001/project/${id}`;
+
+      axios
+        .post(TASK_LIST_URL, { items: newTask })
+        .then((response) => {
+          console.log(
+            "🚀 ~ file: ModalTask.js ~ line 32 ~ .then ~ response",
+            response
+          );
+        })
+        .catch((error) => {
+          console.log("error", error);
+        });
     }
   };
 
