@@ -1,12 +1,16 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { TaskItemBar } from "../task-item-bar/TaskItemBar";
+import { useParams } from "react-router-dom";
 
-export const TaskItem = ({ items }) => {
+export const TaskItem = () => {
+  const { id } = useParams();
+  const items = useSelector((state) => state.projects[id].items);
+
   return (
     <>
       <TaskItemBar />
-
       <ul>
         {items?.map(({ id, title, director, executor, status, date }) => {
           return (
