@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { TaskItem } from "../components/task-item/TaskItem";
 import { Modal } from "../modal/Modal";
@@ -10,12 +10,16 @@ export const TaskItemPage = () => {
   const { id } = useParams();
   const [modal, setModal] = useState(false);
 
-  const pageTitle = useSelector((state) => state.projects[id].name);
+  useEffect(() => {
+    document.body.classList.toggle("modal-open", modal);
+  }, [modal]);
+
+  const pageTitle = useSelector((state) => state.projects[id - 1].name);
 
   return (
-    <main className="p-[20px] w-full h-screen bg-slate-100">
-      <div className="flex items-center w-full">
-        <h1 className="h1">Задачи проекта {pageTitle}</h1>
+    <main className="p-[20px] w-auto ml-[250px] min-h-screen pt-[100px] pb-[50px] bg-slate-100">
+      <div className="flex items-center w-full border-b pb-[20px]">
+        <h1 className="h1">Список задач - {pageTitle}</h1>
         <div className="flex items-center ml-auto">
           <button className="btn-transparent">
             <div className="icon">

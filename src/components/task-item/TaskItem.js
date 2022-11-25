@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 
 export const TaskItem = () => {
   const { id } = useParams();
-  const items = useSelector((state) => state.projects[id].items);
+  const items = useSelector((state) => state.projects[id - 1].items);
 
   return (
     <>

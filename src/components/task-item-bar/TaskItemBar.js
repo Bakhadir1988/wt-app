@@ -2,7 +2,7 @@ import React from "react";
 
 export const TaskItemBar = () => {
   return (
-    <div className="flex mt-[50px] items-center bar-task mb-[7px] shadow min-h-[50px] rounded-[5px] border px-[15px] py-[10px] bg-white">
+    <div className="flex mt-[20px] items-center bar-task mb-[7px] shadow min-h-[50px] rounded-[5px] border px-[15px] py-[10px] bg-white">
       <div className="bar-task-checkbox w-[25px] mr-[20px]">
         <div className="form-check">
           <input
