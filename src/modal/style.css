@@ -10,6 +10,10 @@
 	animation: moveleft 1 ease-out 0.3s
 }
 
+.modal-open {
+  @apply overflow-hidden
+}
+
 @keyframes moveleft {
   0% {
     transform: translateX(100%);

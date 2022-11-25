@@ -8,8 +8,14 @@ export const projectsSlice = createSlice({
   initialState,
   reducers: {
     addTask: (state, action) => {
-      state[action.payload.id] = {
-        items: [...state[action.payload.id].items, action.payload.newTask],
+      console.log("action", action);
+      console.log("action.payload.currentId", action.payload.currentId);
+      state[action.payload.currentId] = {
+        ...state[action.payload.currentId],
+        items: [
+          ...state[action.payload.currentId].items,
+          action.payload.newTask,
+        ]
       };
     },
   },

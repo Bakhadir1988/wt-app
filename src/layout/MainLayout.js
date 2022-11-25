@@ -8,7 +8,7 @@ export const MainLayout = (props) => {
     <>
       <Header />
       <Sidebar />
-      <div className="ml-[250px]">{props.children}</div>
+      {props.children}
     </>
   );
 };

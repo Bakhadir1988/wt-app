@@ -5,7 +5,7 @@ import Logo from "../../assets/logo.svg";
 
 export const Header = () => {
   return (
-    <header className="shadow h-[80px] z-10 flex w-full items-center sticky top-0 border-b left-0 bg-white">
+    <header className="shadow h-[80px] z-10 flex w-full items-center fixed top-0 border-b left-0 bg-white">
       <div className="logo w-[250px] text-center px-[20px] h-[80px] flex bg-white border-b items-center justify-center">
         <img className="w-[50px]" src={Logo} alt="logo" />
       </div>

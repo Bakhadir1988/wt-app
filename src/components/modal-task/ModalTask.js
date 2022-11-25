@@ -2,15 +2,20 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addTask } from "../../features/projects/projectsSlice";
+import { format } from "date-fns";
+import ru from "date-fns/locale/ru";
 import Select from "react-select";
 
 export const ModalTask = ({ setVisible }) => {
   const [inputTitle, setInputTitle] = useState("");
   const [textareaText, setTextareaText] = useState("");
   const [select, setSelect] = useState();
-
   const { id } = useParams();
+  const todayDate = format(new Date(), "dd MMMM yyyy, HH:mm", {
+    locale: ru,
+  });
 
+  const currentId = id - 1;
   const users = useSelector((state) => state.users);
 
   const dispatch = useDispatch();
@@ -24,10 +29,11 @@ export const ModalTask = ({ setVisible }) => {
         status: "Ждет выполнения",
         executor: select.label,
         director: "Рахматулин Альберт",
+        date: todayDate,
       };
 
       setVisible(false);
-      dispatch(addTask({ id, newTask }));
+      dispatch(addTask({ currentId, newTask }));
     }
   };
 
