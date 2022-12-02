@@ -17,14 +17,16 @@ export const projectsSlice = createSlice({
       };
     },
     removeTask: (state, action) => {
-      console.log("🚀 ~ file: projectsSlice.js ~ line 20 ~ action", action.payload)
       state[action.payload.currentId].items = state[
         action.payload.currentId
       ].items.filter((item) => item.id !== action.payload.taskId);
     },
+    addProject: (state, action) => {
+      state = [...state, action.payload.newProject];
+    },
   },
 });
 
-export const { addTask, removeTask } = projectsSlice.actions;
+export const { addTask, removeTask, addProject } = projectsSlice.actions;
 
 export default projectsSlice.reducer;

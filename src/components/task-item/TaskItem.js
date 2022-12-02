@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+import { AiFillDelete, AiFillEdit, AiOutlineCheckCircle } from "react-icons/ai";
 import { TaskItemBar } from "../task-item-bar/TaskItemBar";
 import { useParams } from "react-router-dom";
 import { removeTask } from "../../features/projects/projectsSlice";
@@ -9,9 +9,7 @@ export const TaskItem = () => {
   const { id } = useParams();
   const currentId = id - 1;
   const items = useSelector((state) => state.projects[id - 1].items);
-
-  console.log("items", items);
-
+  
   const dispatch = useDispatch();
 
   const deleteTask = (taskId) => {
@@ -20,7 +18,27 @@ export const TaskItem = () => {
 
   return (
     <>
-      {items.length === 0 && <div>123</div>}
+      {items.length === 0 && (
+        <div className="bg-white flex-col items-center justify-center min-h-[746px] flex rounded-[5px]">
+          <div>
+            <AiOutlineCheckCircle
+              fontSize={84}
+              color="green"
+              className="mx-auto mb-[10px]"
+            />
+            <h3 className="text-3xl">Проект создан</h3>
+          </div>
+          <hr className="w-[300px] my-[20px]" />
+          <div className="flex flex-col justify-center items-center">
+            <h3 className="text-3xl mb-[20px]">Создать задачу</h3>
+            <p className="w-[530px] text-center">
+              Здесь будет список задач, которые вы выполняете или поручаете
+              своим сотрудникам. Создайте первую задачу, чтобы увидеть как она
+              появится в списке
+            </p>
+          </div>
+        </div>
+      )}
       {items.length > 0 && <TaskItemBar />}
       {items.length > 0 && (
         <ul>
