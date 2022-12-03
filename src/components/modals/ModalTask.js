@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { addTask } from "../../features/projects/projectsSlice";
+import { addTask } from "../../features/task/taskSlice";
 import { format } from "date-fns";
 import ru from "date-fns/locale/ru";
 import Select from "react-select";
@@ -15,15 +15,14 @@ export const ModalTask = ({ setVisible }) => {
     locale: ru,
   });
 
-  const currentId = id - 1;
   const users = useSelector((state) => state.users);
 
   const dispatch = useDispatch();
 
   const addTaskItem = () => {
     if (inputTitle) {
-      const newTask = {
-        id: Date.now(),
+      const task = {
+        id: id,
         title: inputTitle,
         content: textareaText,
         status: "Ждет выполнения",
@@ -33,7 +32,10 @@ export const ModalTask = ({ setVisible }) => {
       };
 
       setVisible(false);
-      dispatch(addTask({ currentId, newTask }));
+      dispatch(addTask({ task }));
+
+      setInputTitle("");
+      setTextareaText("");
     }
   };
 
@@ -75,7 +77,11 @@ export const ModalTask = ({ setVisible }) => {
         </div>
       </div>
       <div className="task-button flex items-center w-full left-[280px] right-[20px] p-[20px] border-t mt-auto">
-        <button onClick={addTaskItem} type="submit" className="btn-default">
+        <button
+          onClick={() => addTaskItem(id)}
+          type="submit"
+          className="btn-default"
+        >
           Поставить задачу
         </button>
         <button

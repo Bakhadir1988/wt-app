@@ -9,15 +9,14 @@ export const ModalProject = ({ setVisible }) => {
 
   const addProjectItem = () => {
     if (inputTitle) {
-      const newProject = {
-        id: Date.now(),
+      const project = {
         name: inputTitle,
-        url: inputTitle,
-        items: [],
       };
 
       setVisible(false);
-      dispatch(addProject({ newProject }));
+      dispatch(addProject({ project }));
+
+      setInputTitle("");
     }
   };
 

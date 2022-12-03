@@ -7,7 +7,9 @@ export const MainLayout = (props) => {
     <>
       <Header />
       <Sidebar />
-      {props.children}
+      <main className="p-[20px] w-auto ml-[250px] min-h-screen pt-[100px] bg-slate-100">
+        {props.children}
+      </main>
     </>
   );
 };
