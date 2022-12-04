@@ -1,9 +1,26 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addProject } from "../../features/projects/projectsSlice";
+import { format } from "date-fns";
+import { Select, DatePicker } from "antd";
+import ru from "date-fns/locale/ru";
 
 export const ModalProject = ({ setVisible }) => {
+  const users = useSelector((state) => state.users);
+  /** Название */
   const [inputTitle, setInputTitle] = useState("");
+  /** Дата создания */
+  const todayDate = format(new Date(), "dd MMMM yyyy", {
+    locale: ru,
+  });
+  /** Менеджер */
+  const [manager, setManager] = useState();
+  /** Оптимизатор */
+  const [optimizer, setOptimizer] = useState();
+  /** Участники */
+  const [participant, setParticipant] = useState();
+  /** Участники */
+  const [endDate, setEndDate] = useState();
 
   const dispatch = useDispatch();
 
@@ -11,6 +28,11 @@ export const ModalProject = ({ setVisible }) => {
     if (inputTitle) {
       const project = {
         name: inputTitle,
+        createDate: todayDate,
+        endDate: endDate,
+        manager: manager,
+        optimizer: optimizer,
+        participants: participant,
       };
 
       setVisible(false);
@@ -18,6 +40,26 @@ export const ModalProject = ({ setVisible }) => {
 
       setInputTitle("");
     }
+  };
+
+  const participantSelect = (value) => {
+    setParticipant({ value });
+  };
+
+  const managerSelect = (value) => {
+    setManager({ value });
+  };
+
+  const optimizerSelect = (value) => {
+    setOptimizer({ value });
+  };
+
+  const onChangeEndDate = (date) => {
+    const endDateFormat = format(new Date(date), "dd MMMM yyyy", {
+      locale: ru,
+    });
+
+    setEndDate(endDateFormat);
   };
 
   return (
@@ -31,13 +73,60 @@ export const ModalProject = ({ setVisible }) => {
               onChange={(e) => setInputTitle(e.target.value)}
               type="text"
               placeholder="Введите название проекта"
-              className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none mb-[20px]"
+              className="form-input"
             />
             <textarea
               rows="5"
               placeholder="Описание"
-              className=" form-control block w-full px-3 py-1.5 text-base h-[400px] font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              className="form-textarea"
             />
+            <div className="flex items-center mt-[20px]">
+              <div className="bloc mb-1 pr-4 mr-[20px] min-w-[140px]">
+                Участники
+              </div>
+              <Select
+                className="form-select"
+                mode="multiple"
+                allowClear
+                placeholder="Выбрите участников"
+                onChange={participantSelect}
+                options={users}
+              />
+            </div>
+            <div className="flex items-center mt-[20px]">
+              <div className="bloc mb-1 pr-4 mr-[20px] min-w-[140px]">
+                Менеджер
+              </div>
+              <Select
+                className="form-select"
+                allowClear
+                placeholder="Выбрите менеджера"
+                onChange={managerSelect}
+                options={users}
+              />
+            </div>
+            <div className="flex items-center mt-[20px]">
+              <div className="bloc mb-1 pr-4 mr-[20px] min-w-[140px]">
+                Оптимизатор
+              </div>
+              <Select
+                className="form-select"
+                allowClear
+                placeholder="Выбрите оптимизатора"
+                onChange={optimizerSelect}
+                options={users}
+              />
+            </div>
+            <div className="flex items-center mt-[20px]">
+              <div className=" bloc mb-1 pr-4 mr-[20px] min-w-[140px]">
+                Дата окончания
+              </div>
+              <DatePicker
+                className="form-date"
+                placeholder="Выберете дату"
+                onChange={onChangeEndDate}
+              />
+            </div>
           </form>
         </div>
       </div>

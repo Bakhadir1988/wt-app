@@ -1,17 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { projects } from "../../moсks/projects";
 
 let id = 0;
-const initialState = projects;
 
 export const projectsSlice = createSlice({
   name: "projects",
-  initialState: initialState,
+  initialState: [],
   reducers: {
     addProject: (state, action) => {
       state.push({
         id: ++id,
         name: action.payload.project.name,
+        status: "Активен",
+        createDate: action.payload.project.createDate,
+        endDate: action.payload.project.endDate,
+        manager: action.payload.project.manager,
+        optimizer: action.payload.project.optimizer,
+        participants: action.payload.project.participants,
       });
     },
   },
