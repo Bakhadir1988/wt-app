@@ -26,7 +26,7 @@ export const Home = () => {
             Создать проект
           </button>
           <Modal visible={modalProject} setVisible={setModalProject}>
-            <ModalProject setVisible={setModalProject} />
+            <ModalProject title={'Создание проекта'} setVisible={setModalProject} />
           </Modal>
         </div>
       </div>

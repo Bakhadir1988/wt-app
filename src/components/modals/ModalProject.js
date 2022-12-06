@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { addProject } from "../../features/projects/projectsSlice";
 import { format } from "date-fns";
 import { Select, DatePicker } from "antd";
+import { v4 } from "uuid";
 import ru from "date-fns/locale/ru";
+import locale from "antd/lib/date-picker/locale/ru_RU";
 
-export const ModalProject = ({ setVisible }) => {
+export const ModalProject = ({ setVisible, title }) => {
   const users = useSelector((state) => state.users);
   /** Название */
   const [inputTitle, setInputTitle] = useState("");
@@ -19,7 +21,7 @@ export const ModalProject = ({ setVisible }) => {
   const [optimizer, setOptimizer] = useState();
   /** Участники */
   const [participant, setParticipant] = useState();
-  /** Участники */
+  /** Конец даты */
   const [endDate, setEndDate] = useState();
 
   const dispatch = useDispatch();
@@ -27,12 +29,14 @@ export const ModalProject = ({ setVisible }) => {
   const addProjectItem = () => {
     if (inputTitle) {
       const project = {
+        id: v4(),
         name: inputTitle,
         createDate: todayDate,
         endDate: endDate,
         manager: manager,
         optimizer: optimizer,
         participants: participant,
+        status: "Активен",
       };
 
       setVisible(false);
@@ -65,7 +69,9 @@ export const ModalProject = ({ setVisible }) => {
   return (
     <>
       <div className="task-info p-[20px] w-full h-full overflow-y-auto overflow-x-hidden">
-        <h1 className="h1 border-b pb-[20px] mb-[20px]">Новый проект</h1>
+        <h1 className="h1 border-b pb-[20px] mb-[20px]">
+          {title}
+        </h1>
         <div className="task-conten bg-white rounded p-[20px]">
           <form action="">
             <input
@@ -124,6 +130,7 @@ export const ModalProject = ({ setVisible }) => {
               <DatePicker
                 className="form-date"
                 placeholder="Выберете дату"
+                locale={locale}
                 onChange={onChangeEndDate}
               />
             </div>

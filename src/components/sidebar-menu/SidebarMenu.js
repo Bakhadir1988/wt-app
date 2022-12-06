@@ -4,7 +4,7 @@ import { AiFillFileText } from "react-icons/ai";
 import { useSelector } from "react-redux";
 
 export const SidebarMenu = () => {
-  const projects = useSelector((state) => state.projects);
+  const projects = useSelector((state) => state.projects.project);
 
   return (
     <nav className="flex-grow w-inherit overflow-y-auto h-[calc(100vh-161.5px)]">

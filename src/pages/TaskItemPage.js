@@ -15,12 +15,12 @@ export const TaskItemPage = () => {
     document.body.classList.toggle("modal-open", modalTask);
   }, [modalTask]);
 
-  const pageTitle = useSelector((state) => state.projects[id - 1].name);
+  // const pageTitle = useSelector((state) => state.projects[id - 1].name);
 
   return (
     <MainLayout>
       <div className="flex items-center w-full border-b pb-[20px]">
-        <h1 className="h1">Список задач - {pageTitle}</h1>
+        {/* <h1 className="h1">Список задач - {pageTitle}</h1> */}
         <div className="flex items-center ml-auto">
           <button className="btn-transparent">
             <div className="icon">
