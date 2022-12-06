@@ -6,8 +6,10 @@ export const MainLayout = (props) => {
   return (
     <>
       <Header />
-      <Sidebar />
-      {props.children}
+      {/* <Sidebar /> */}
+      <main className="p-[20px] w-auto min-h-screen pt-[100px] bg-slate-100">
+        {props.children}
+      </main>
     </>
   );
 };

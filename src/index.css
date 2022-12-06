@@ -2,26 +2,92 @@
 @tailwind components;
 @tailwind utilities;
 
+/* полоса прокрутки (скроллбар) */
+::-webkit-scrollbar {
+  width: 7px; /* ширина для вертикального скролла */
+  height: 5px; /* высота для горизонтального скролла */
+}
+
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+  background-color: #2563eb;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #2563eb;
+}
+
+/* Стрелки */
+
+::-webkit-scrollbar-button:vertical:start:decrement {
+  display: none;
+}
+
+::-webkit-scrollbar-button:vertical:end:increment {
+  display: none;
+}
+
+::-webkit-scrollbar-button:horizontal:start:decrement {
+  display: none;
+}
+
+::-webkit-scrollbar-button:horizontal:end:increment {
+  display: none;
+}
+
 .sidebar-link.active {
-    @apply border-blue-600 bg-slate-100 text-blue-600
+  @apply border-blue-600 bg-slate-100 text-blue-600;
 }
 
 .sidebar-link.active svg {
-    @apply fill-blue-600
+  @apply fill-blue-600;
 }
 
 .sidebar-link.active svg {
-    @apply fill-blue-600
+  @apply fill-blue-600;
 }
 
 .h1 {
-    @apply text-3xl font-semibold
+  @apply text-3xl font-semibold;
 }
 
 .btn-default {
-    @apply flex items-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 border border-blue-700 rounded
+  @apply flex items-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 border border-blue-700 rounded;
 }
 
 .btn-transparent {
-    @apply flex items-center bg-transparent hover:bg-blue-600 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded
+  @apply flex items-center bg-transparent hover:bg-blue-600 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded;
+}
+
+.form-select {
+  @apply appearance-none block text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none min-w-[20%];
+}
+
+.form-textarea {
+  @apply block w-full px-3 py-1.5 text-base h-[400px] font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none;
+}
+
+.form-input {
+  @apply block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none mb-[20px];
+}
+
+.form-date {
+  @apply appearance-none block text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none py-[2px]
+}
+
+.form-select .ant-select-selection-item-remove {
+  display: flex;
+}
+
+.form-select .ant-select-selection-item {
+  @apply rounded
+}
+
+.form-select .ant-select-clear {
+  display: flex;
+}
+
+.form-select .ant-select-selector {
+  @apply rounded
 }

@@ -2,13 +2,19 @@ export const projects = [
   {
     id: 1,
     name: "Scandi",
-    url: "scandi",
-    items: [],
+    status: "Активен",
+    createDate: null,
+    endDate: null,
+    manager: null,
+    optimizer: null,
   },
   {
     id: 2,
     name: "Эра-Водолея",
-    url: "era-vodoley",
-    items: [],
+    status: "Активен",
+    createDate: null,
+    endDate: null,
+    manager: null,
+    optimizer: null,
   },
 ];
