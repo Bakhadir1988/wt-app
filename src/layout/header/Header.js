@@ -1,18 +1,10 @@
 import React from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 
-import Logo from "../../assets/logo.svg";
 
 export const Header = () => {
   return (
-    <header className="shadow h-[80px] z-10 flex w-full items-center fixed top-0 border-b left-0 bg-white">
-      <a
-        href="/"
-        className="logo w-[250px] text-center px-[20px] h-[80px] flex bg-white border-b items-center justify-center"
-      >
-        <img className="w-[50px]" src={Logo} alt="logo" />
-      </a>
-
+    <header className="shadow h-[80px] ml-[270px] z-10 flex w-full items-center fixed top-0 border-b left-0 bg-white">
       <div className="flex justify-center px-[20px] flex-1">
         <a href="/project/">Проекты</a>
         <div className="input-group relative flex items-stretch w-full">

@@ -12,8 +12,8 @@ export const Sidebar = () => {
   }, [modalProject]);
 
   return (
-    <aside className="fixed top-[80px] shadow w-[250px] h-full text-black left-0">
-      <div className="pt-[20px] shadow pb-[20px] w-[250px] text-center left-0 right-0">
+    <aside className="fixed shadow w-[225px] h-full text-black left-0">
+      {/* <div className="pt-[20px] shadow pb-[20px] w-[250px] text-center left-0 right-0">
         <button
           onClick={() => setModalProject(true)}
           className="btn-default w-[220px] mx-auto justify-center"
@@ -23,9 +23,9 @@ export const Sidebar = () => {
           </div>
           Создать проект
         </button>
-      </div>
+      </div> */}
 
-      <SidebarMenu />
+      {/* <SidebarMenu /> */}
 
       <Modal visible={modalProject} setVisible={setModalProject}>
         <ModalProject setVisible={setModalProject} />
