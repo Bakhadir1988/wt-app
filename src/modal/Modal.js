@@ -5,11 +5,14 @@ import { AiOutlineClose } from "react-icons/ai";
 import "./style.css";
 
 export const Modal = ({ children, visible, setVisible, width }) => {
+
+  console.log("visible", visible);
+
   return createPortal(
     <div
       className={`modal ${
-        visible ? "active" : ""
-      } fixed justify-end top-0 left-0 right-0 bottom-0 z-10 hidden`}
+        visible ? "active" : "hidden"
+      } fixed justify-end top-0 left-0 right-0 bottom-0 z-10`}
       onClick={() => setVisible(false)}
     >
       <div
