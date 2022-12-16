@@ -1,5 +1,5 @@
 .menu-link {
-  @apply px-[15px] rounded-[8px] transition duration-500 ease-in-out dark:text-[#c5c5c5c5] text-[14px] py-[10px] mb-[5px] text-[#202020] hover:bg-[#FAFBFC] dark:hover:bg-[#1F2022] flex items-center dark:hover:text-white;
+  @apply px-[15px] rounded-[8px] transition duration-500 ease-in-out dark:text-[#c5c5c5c5] text-[14px] py-[10px] mb-[5px] text-[#202020] hover:bg-[#E6E6E6] dark:hover:bg-[#272727] flex items-center dark:hover:text-white;
 }
 
 .menu-link.active {

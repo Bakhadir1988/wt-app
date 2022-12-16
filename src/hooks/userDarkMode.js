@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export const userDarkMode = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -14,7 +13,7 @@ export const userDarkMode = () => {
     root.classList.remove(colorTheme);
     root.classList.add(theme);
     localStorage.setItem("theme", theme);
-  }, [theme]);
+  }, [colorTheme, theme]);
 
   return [colorTheme, setTheme];
 };

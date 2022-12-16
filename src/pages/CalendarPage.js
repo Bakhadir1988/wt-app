@@ -4,7 +4,7 @@ import { MainLayout } from '../layout/MainLayout';
 export const CalendarPage = () => {
   return (
     <MainLayout>
-      <main className="main">CalendarPage</main>
+      <div>CalendarPage</div>
     </MainLayout>
   );
 }

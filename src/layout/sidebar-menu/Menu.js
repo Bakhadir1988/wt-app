@@ -9,7 +9,7 @@ export const SidebarMenu = () => {
     <nav className="mt-[20px]">
       <ul>
         <li className="mx-[20px]">
-          <NavLink to={`/project/`} className="menu-link group">
+          <NavLink to={`/projects/`} className="menu-link group">
             <FaFileContract
               className="menu-icon dark:group-hover:text-white"
               fontSize={17}

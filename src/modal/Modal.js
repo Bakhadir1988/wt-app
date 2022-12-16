@@ -5,9 +5,6 @@ import { AiOutlineClose } from "react-icons/ai";
 import "./style.css";
 
 export const Modal = ({ children, visible, setVisible, width }) => {
-
-  console.log("visible", visible);
-
   return createPortal(
     <div
       className={`modal ${
@@ -18,17 +15,17 @@ export const Modal = ({ children, visible, setVisible, width }) => {
       <div
         className={`${
           width ? `w-[${width}]` : "w-full"
-        } modal-wrapper relative ml-[250px] bg-slate-100 shadow`}
+        } modal-wrapper relative ml-[250px] bg-[#FAFBFC] dark:bg-[#0D0D0D]  shadow`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="modal-content flex items-start flex-col h-full">
+        <div className="modal-content flex items-start dark:text-white flex-col h-full">
           {children}
         </div>
         <button
-          className="modal-close w-[40px] h-[40px] flex items-center justify-center cursor-pointer absolute top-[20px] bg-slate-100 shadow left-[-60px] hover:bg-slate-200 rounded"
+          className="modal-close w-[40px] h-[40px] flex items-center justify-center cursor-pointer absolute top-[20px] bg-red-700 shadow left-[-60px] hover:bg-red-900 rounded"
           onClick={() => setVisible(false)}
         >
-          <AiOutlineClose fontSize={17} />
+          <AiOutlineClose color="#fff" fontSize={17} />
         </button>
       </div>
     </div>,

@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addProject } from "../../features/projects/projectsSlice";
 import { format } from "date-fns";
 import { Select, DatePicker } from "antd";
-import { v4 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
+import { MainLayout } from "../../layout/MainLayout";
+import { addProject } from "../../features/projects/projectsSlice";
 import ru from "date-fns/locale/ru";
 import locale from "antd/lib/date-picker/locale/ru_RU";
 
-export const ModalProject = ({ setVisible, title }) => {
+export const CreateProject = () => {
+  /** id проекта */
+  const id = uuidv4();
+  /** Список людей */
   const users = useSelector((state) => state.users);
   /** Название */
   const [inputTitle, setInputTitle] = useState("");
@@ -29,7 +33,7 @@ export const ModalProject = ({ setVisible, title }) => {
   const addProjectItem = () => {
     if (inputTitle) {
       const project = {
-        id: v4(),
+        id: id,
         name: inputTitle,
         createDate: todayDate,
         endDate: endDate,
@@ -39,7 +43,6 @@ export const ModalProject = ({ setVisible, title }) => {
         status: "Активен",
       };
 
-      setVisible(false);
       dispatch(addProject({ project }));
 
       setInputTitle("");
@@ -69,10 +72,10 @@ export const ModalProject = ({ setVisible, title }) => {
   };
 
   return (
-    <>
+    <MainLayout>
       <div className="task-info p-[20px] w-full h-full overflow-y-auto overflow-x-hidden">
         <h1 className="h1 border-b dark:border-[#202020]  pb-[20px] mb-[20px] dark:text-white">
-          {title}
+          Создание проекта
         </h1>
         <div className="task-content bg-white rounded p-[20px]">
           <form action="">
@@ -138,16 +141,16 @@ export const ModalProject = ({ setVisible, title }) => {
         </div>
       </div>
       <div className="task-button flex items-center w-full left-[280px] right-[20px] p-[20px] border-t mt-auto">
-        <button onClick={addProjectItem} type="submit" className="btn-default">
-          Создать проект
-        </button>
-        <button
-          className="btn-transparent ml-[20px]"
-          onClick={() => setVisible(false)}
+        <a
+          href={`/projects/`}
+          onClick={addProjectItem}
+          type="submit"
+          className="btn-default"
         >
-          Отмена
-        </button>
+          Создать проект
+        </a>
+        <button className="btn-transparent ml-[20px]">Отмена</button>
       </div>
-    </>
+    </MainLayout>
   );
 };

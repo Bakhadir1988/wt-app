@@ -62,7 +62,7 @@
 }
 
 .input {
-  @apply relative flex-auto min-w-0 block w-full px-3 pl-[20px] pr-[40px] text-base font-normal text-gray-700 dark:bg-[#1F2022] dark:border-[#202020] bg-clip-padding border rounded-[8px] transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none h-[42px];
+  @apply relative flex-auto min-w-0 block w-[40%] px-3 pl-[20px] pr-[40px] text-base font-normal text-gray-700 dark:bg-[#1F2022] dark:border-[#202020] bg-clip-padding border rounded-[8px] transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none h-[42px];
 }
 
 .sidebar-link.active {
