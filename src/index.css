@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
+
+@layer base {
+  body {
+    font-family: "Inter", sans-serif;
+    @apply bg-[#FAFBFC] dark:bg-[#000000];
+  }
+}
+
 /* полоса прокрутки (скроллбар) */
 ::-webkit-scrollbar {
   width: 7px; /* ширина для вертикального скролла */
@@ -36,6 +45,26 @@
   display: none;
 }
 
+.header {
+  @apply bg-[#fff] flex fixed left-0 right-0 ml-[249px] px-[20px] items-center h-[80px] border dark:border-[#202020] dark:bg-[#0D0D0D] dark:text-white;
+}
+
+.aside {
+  @apply bg-[#fff] fixed left-0 top-0 bottom-0 dark:border-[#202020] border dark:bg-[#0D0D0D] w-[250px];
+}
+
+.main {
+  @apply bg-[#fff] rounded-[8px] ml-[270px] w-auto h-full mr-[20px] mb-[20px] mt-[100px] p-[20px] border dark:border-[#202020] dark:bg-[#0D0D0D] dark:text-white;
+}
+
+.trans {
+  @apply transition ease-in-out duration-500
+}
+
+.input {
+  @apply relative flex-auto min-w-0 block w-[40%] px-3 pl-[20px] pr-[40px] text-base font-normal text-gray-700 dark:bg-[#1F2022] dark:border-[#202020] bg-clip-padding border rounded-[8px] transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none h-[42px];
+}
+
 .sidebar-link.active {
   @apply border-blue-600 bg-slate-100 text-blue-600;
 }
@@ -53,7 +82,7 @@
 }
 
 .btn-default {
-  @apply flex items-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 border border-blue-700 rounded;
+  @apply px-[15px] rounded-[8px] border transition duration-500 ease-in-out dark:text-[#c5c5c5c5] text-[14px] py-[10px] mb-[5px] text-[#202020] bg-[#FAFBFC] hover:bg-[#1B4FE2] hover:text-white dark:bg-[#1F2022] dark:hover:bg-[#1B4FE2] flex items-center dark:hover:text-white dark:border-[#202020];
 }
 
 .btn-transparent {
@@ -73,7 +102,7 @@
 }
 
 .form-date {
-  @apply appearance-none block text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none py-[2px]
+  @apply appearance-none block text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none py-[2px];
 }
 
 .form-select .ant-select-selection-item-remove {
@@ -81,7 +110,7 @@
 }
 
 .form-select .ant-select-selection-item {
-  @apply rounded
+  @apply rounded;
 }
 
 .form-select .ant-select-clear {
@@ -89,5 +118,5 @@
 }
 
 .form-select .ant-select-selector {
-  @apply rounded
+  @apply rounded;
 }

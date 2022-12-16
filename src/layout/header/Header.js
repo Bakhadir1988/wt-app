@@ -1,32 +1,48 @@
 import React from "react";
-import { AiOutlineSearch } from "react-icons/ai";
-
-import Logo from "../../assets/logo.svg";
+import { FaBars, FaMoon, FaSearch, FaSun } from "react-icons/fa";
+import { userDarkMode } from "../../hooks/userDarkMode";
 
 export const Header = () => {
-  return (
-    <header className="shadow h-[80px] z-10 flex w-full items-center fixed top-0 border-b left-0 bg-white">
-      <a
-        href="/"
-        className="logo w-[250px] text-center px-[20px] h-[80px] flex bg-white border-b items-center justify-center"
-      >
-        <img className="w-[50px]" src={Logo} alt="logo" />
-      </a>
+  const [colorTheme, setColorTheme] = userDarkMode();
 
-      <div className="flex justify-center px-[20px] flex-1">
-        <a href="/project/">Проекты</a>
-        <div className="input-group relative flex items-stretch w-full">
-          <input
-            type="search"
-            className="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none h-[42px]"
-            placeholder="Поиск"
-            aria-label="Поиск"
-            aria-describedby="button-addon2"
+  return (
+    <header className="header">
+      <FaBars
+        className="ml-0 mr-auto cursor-pointer hover:text-gray-500 dark:text-[#c5c5c5c5] dark:hover:text-white"
+        fontSize={20}
+      />
+      <div className="input-group relative flex mr-[20px] items-stretch w-[40%]">
+        <input
+          type="search"
+          className="input"
+          placeholder="Поиск"
+          aria-label="Поиск"
+          aria-describedby="button-addon2"
+        />
+        <button className="absolute right-[15px] top-0 bottom-0">
+          <FaSearch
+            fontSize={17}
+            className="text-[#c5c5c5c5] hover:text-white"
           />
-          <button className="btn-default">
-            <AiOutlineSearch fontSize={17} />
+        </button>
+      </div>
+
+      <div
+        className="group flex ml-auto bg-[#FAFBFC] border dark:border-none hover:bg-[#E6E6E6] dark:bg-[#1F2022] w-[35px] h-[35px] items-center justify-center rounded-[100%] dark:group-hover:bg-[#272727]"
+        onClick={() => setColorTheme(colorTheme)}
+      >
+        {colorTheme === "light" ? (
+          <button className="">
+            <FaSun
+              className="text-white dark:text-[#c5c5c5c5] dark:group-hover:text-white"
+              fontSize={17}
+            />
           </button>
-        </div>
+        ) : (
+          <button className="">
+            <FaMoon className="text-black dark:text-black" fontSize={17} />
+          </button>
+        )}
       </div>
     </header>
   );

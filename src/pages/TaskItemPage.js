@@ -1,26 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { TaskItem } from "../components/task-item/TaskItem";
 import { Modal } from "../modal/Modal";
 import { ModalTask } from "../components/modals/ModalTask";
 import { AiFillFilter, AiOutlinePlus } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { MainLayout } from "../layout/MainLayout";
+import { useParams } from "react-router-dom";
 
 export const TaskItemPage = () => {
-  const { id } = useParams();
   const [modalTask, setModalTask] = useState(false);
+
+  const { id } = useParams();
 
   useEffect(() => {
     document.body.classList.toggle("modal-open", modalTask);
   }, [modalTask]);
 
-  // const pageTitle = useSelector((state) => state.projects[id - 1].name);
+  const projects = useSelector((state) => state.projects.project);
+
+  const projectTitle = projects.filter((item) =>
+    item.id === id ? item.id : null
+  );
 
   return (
     <MainLayout>
       <div className="flex items-center w-full border-b pb-[20px]">
-        {/* <h1 className="h1">Список задач - {pageTitle}</h1> */}
+        <h1 className="h1">Проект: {projectTitle[0].name}</h1>
         <div className="flex items-center ml-auto">
           <button className="btn-transparent">
             <div className="icon">

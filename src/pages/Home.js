@@ -28,7 +28,7 @@ export const Home = () => {
           <Modal visible={modalProject} setVisible={setModalProject}>
             <ModalProject title={'Создание проекта'} setVisible={setModalProject} />
           </Modal>
-        </div>
+        </div> 
       </div>
       <ProjectItems />
     </IndexLayout>

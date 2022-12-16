@@ -1,5 +1,17 @@
 export const users = [
   {
+    label: "Manager",
+    options: [
+      { label: "Jack", value: "jack" },
+      { label: "Lucy", value: "lucy" },
+    ],
+  },
+  {
+    label: "Engineer",
+    options: [{ label: "yiminghe", value: "Yiminghe" }],
+  },
+
+  {
     id: 1,
     value: "Иркабаев Бахадир",
     label: "Иркабаев Бахадир",
