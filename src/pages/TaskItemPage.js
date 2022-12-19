@@ -24,27 +24,32 @@ export const TaskItemPage = () => {
 
   return (
     <MainLayout>
-      <div className="flex items-center w-full border-b pb-[20px]">
-        <h1 className="h1">Проект: {projectTitle[0].name}</h1>
-        <div className="flex items-center ml-auto">
-          <button className="btn-transparent">
-            <div className="icon">
-              <AiFillFilter className="mr-[10px]" fontSize={17} />
-            </div>
-            Фильтр
-          </button>
-          <button
-            onClick={() => setModalTask(true)}
-            className="btn-default ml-[20px]"
-          >
-            <div className="icon">
-              <AiOutlinePlus className="mr-[10px]" fontSize={17} />
-            </div>
-            Создать задачу
-          </button>
-          <Modal visible={modalTask} setVisible={setModalTask}>
-            <ModalTask setVisible={setModalTask} />
-          </Modal>
+      <div className="flex items-center w-full">
+        <div className="flex items-center w-full justify-end bg-[#fff] mb-[20px] dark:bg-[#0D0D0D] dark:text-white">
+          <h1 className="mr-auto text-[28px]">
+            Проект: {projectTitle[0].name}
+          </h1>
+
+          <div className="flex items-center ml-auto">
+            <button className="btn-transparent">
+              <div className="icon">
+                <AiFillFilter className="mr-[10px]" fontSize={17} />
+              </div>
+              Фильтр
+            </button>
+            <button
+              onClick={() => setModalTask(true)}
+              className="btn-default ml-[20px]"
+            >
+              <div className="icon">
+                <AiOutlinePlus className="mr-[10px]" fontSize={17} />
+              </div>
+              Создать задачу
+            </button>
+            <Modal visible={modalTask} setVisible={setModalTask}>
+              <ModalTask setVisible={setModalTask} />
+            </Modal>
+          </div>
         </div>
       </div>
       <TaskItem />

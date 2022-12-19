@@ -14,7 +14,7 @@ export const Header = () => {
       <div className="input-group relative flex mr-[20px] items-stretch w-[40%]">
         <input
           type="search"
-          className="input"
+          className="input-search"
           placeholder="Поиск"
           aria-label="Поиск"
           aria-describedby="button-addon2"

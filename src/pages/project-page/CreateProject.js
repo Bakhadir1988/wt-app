@@ -7,6 +7,7 @@ import { MainLayout } from "../../layout/MainLayout";
 import { addProject } from "../../features/projects/projectsSlice";
 import ru from "date-fns/locale/ru";
 import locale from "antd/lib/date-picker/locale/ru_RU";
+import { Link } from "react-router-dom";
 
 export const CreateProject = () => {
   /** id проекта */
@@ -43,7 +44,7 @@ export const CreateProject = () => {
         status: "Активен",
       };
 
-      dispatch(addProject({ project }));
+      dispatch(addProject(project));
 
       setInputTitle("");
       setParticipant(null);
@@ -73,83 +74,87 @@ export const CreateProject = () => {
 
   return (
     <MainLayout>
-      <div className="task-info p-[20px] w-full h-full overflow-y-auto overflow-x-hidden">
-        <h1 className="h1 border-b dark:border-[#202020]  pb-[20px] mb-[20px] dark:text-white">
-          Создание проекта
-        </h1>
-        <div className="task-content bg-white rounded p-[20px]">
-          <form action="">
-            <input
-              value={inputTitle}
-              onChange={(e) => setInputTitle(e.target.value)}
-              type="text"
-              placeholder="Введите название проекта"
-              className="form-input"
-            />
-            <textarea
-              rows="5"
-              placeholder="Описание"
-              className="form-textarea"
-            />
-            <div className="flex items-center mt-[20px]">
-              <div className="bloc mb-1 pr-4 mr-[20px] min-w-[140px]">
-                Участники
-              </div>
-              <Select
-                className="form-select"
-                mode="multiple"
-                placeholder="Выберите участников"
-                onChange={participantSelect}
-                options={users}
+      <div className="flex items-start dark:text-white flex-col h-full">
+        <div className="task-info w-full h-full overflow-y-auto overflow-x-hidden flex items-start dark:text-white flex-col">
+          <div className="flex items-center w-full justify-end bg-[#fff] mb-[20px] dark:bg-[#0D0D0D] dark:text-white">
+            <h1 className="mr-auto text-[28px]">Создание проекта</h1>
+          </div>
+          <div className="task-content w-full bg-white dark:border-[#202020] dark:bg-[#0D0D0D] rounded">
+            <form action="">
+              <input
+                value={inputTitle}
+                onChange={(e) => setInputTitle(e.target.value)}
+                type="text"
+                placeholder="Введите название проекта"
+                className="form-input mb-[10px]"
               />
-            </div>
-            <div className="flex items-center mt-[20px]">
-              <div className="bloc mb-1 pr-4 mr-[20px] min-w-[140px]">
-                Менеджер
-              </div>
-              <Select
-                className="form-select"
-                onClear={(e) => setManager(e.target.value)}
-                placeholder="Выберите менеджера"
-                onChange={managerSelect}
-                options={users}
+              <textarea
+                rows="5"
+                placeholder="Описание"
+                className="form-textarea"
               />
-            </div>
-            <div className="flex items-center mt-[20px]">
-              <div className="bloc mb-1 pr-4 mr-[20px] min-w-[140px]">
-                Оптимизатор
+              <div className="flex items-center mt-[20px]">
+                <div className="bloc mb-1 pr-4 mr-[20px] min-w-[140px] text-[14px]">
+                  Участники
+                </div>
+                <Select
+                  className="form-select"
+                  mode="multiple"
+                  placeholder="Выберите участников"
+                  onChange={participantSelect}
+                  options={users}
+                />
               </div>
-              <Select
-                className="form-select"
-                placeholder="Выберите оптимизатора"
-                onChange={optimizerSelect}
-                options={users}
-              />
-            </div>
-            <div className="flex items-center mt-[20px]">
-              <div className=" bloc mb-1 pr-4 mr-[20px] min-w-[140px]">
-                Дата окончания
+              <div className="flex items-center mt-[20px]">
+                <div className="bloc mb-1 pr-4 mr-[20px] text-[14px] min-w-[140px]">
+                  Менеджер
+                </div>
+                <Select
+                  className="form-select"
+                  onClear={(e) => setManager(e.target.value)}
+                  placeholder="Выберите менеджера"
+                  onChange={managerSelect}
+                  options={users}
+                />
               </div>
-              <DatePicker
-                className="form-date"
-                placeholder="Выберете дату"
-                locale={locale}
-                onChange={onChangeEndDate}
-              />
-            </div>
-          </form>
+              <div className="flex items-center mt-[20px]">
+                <div className="bloc mb-1 pr-4 mr-[20px] text-[14px] min-w-[140px]">
+                  Оптимизатор
+                </div>
+                <Select
+                  className="form-select"
+                  placeholder="Выберите оптимизатора"
+                  onChange={optimizerSelect}
+                  options={users}
+                />
+              </div>
+              <div className="flex items-center mt-[20px]">
+                <div className=" bloc mb-1 pr-4 mr-[20px] min-w-[140px] text-[14px]">
+                  Дата окончания
+                </div>
+                <DatePicker
+                  className="form-date"
+                  placeholder="Выберете дату"
+                  locale={locale}
+                  onChange={onChangeEndDate}
+                />
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
-      <div className="task-button flex items-center w-full left-[280px] right-[20px] p-[20px] border-t mt-auto">
-        <a
-          href={`/projects/`}
-          onClick={addProjectItem}
-          type="submit"
-          className="btn-default"
-        >
-          Создать проект
-        </a>
-        <button className="btn-transparent ml-[20px]">Отмена</button>
+        <div className="task-button flex items-center w-full pt-[20px] border-t">
+          <Link
+            to={`/projects/`}
+            onClick={addProjectItem}
+            type="submit"
+            className="btn-default"
+          >
+            Создать проект
+          </Link>
+          <Link to={`/projects/`} className="btn-default btn-cancel ml-[20px]">
+            Отмена
+          </Link>
+        </div>
       </div>
     </MainLayout>
   );

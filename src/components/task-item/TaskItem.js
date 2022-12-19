@@ -2,17 +2,15 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AiFillDelete, AiFillEdit, AiOutlineCheckCircle } from "react-icons/ai";
 import { TaskItemBar } from "../task-item-bar/TaskItemBar";
-import { useParams } from "react-router-dom";
 import { removeTask } from "../../features/task/taskSlice";
 
 export const TaskItem = () => {
-  const { id } = useParams();
   const items = useSelector((state) => state.task);
 
   const dispatch = useDispatch();
 
-  const deleteTask = (taskId) => {
-    dispatch(removeTask({ taskId, id, items }));
+  const deleteTask = (id) => {
+    dispatch(removeTask(id));
   };
 
   return (

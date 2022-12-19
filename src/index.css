@@ -58,11 +58,11 @@
 }
 
 .trans {
-  @apply transition ease-in-out duration-500
+  @apply transition ease-in-out duration-500;
 }
 
-.input {
-  @apply relative flex-auto min-w-0 block w-[40%] px-3 pl-[20px] pr-[40px] text-base font-normal text-gray-700 dark:bg-[#1F2022] dark:border-[#202020] bg-clip-padding border rounded-[8px] transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none h-[42px];
+.input-search {
+  @apply relative text-[14px] flex-auto min-w-0 block w-[40%] px-3 pl-[20px] pr-[40px] font-normal text-gray-700 dark:bg-[#1F2022] dark:border-[#202020] bg-clip-padding border rounded-[8px] transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none h-[42px] dark:text-[#c5c5c5c5];
 }
 
 .sidebar-link.active {
@@ -85,20 +85,24 @@
   @apply px-[15px] rounded-[8px] border transition duration-500 ease-in-out dark:text-[#c5c5c5c5] text-[14px] py-[10px] mb-[5px] text-[#202020] bg-[#FAFBFC] hover:bg-[#1B4FE2] hover:text-white dark:bg-[#1F2022] dark:hover:bg-[#1B4FE2] flex items-center dark:hover:text-white dark:border-[#202020];
 }
 
+.btn-cancel {
+  @apply hover:bg-red-900 hover:border-red-900 dark:hover:bg-red-900 dark:hover:border-red-900;
+}
+
 .btn-transparent {
   @apply flex items-center bg-transparent hover:bg-blue-600 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded;
 }
 
 .form-select {
-  @apply appearance-none block text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none min-w-[20%];
+  @apply appearance-none block text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat transition ease-in-out m-0 focus:text-gray-700 focus:bg-white text-[14px] focus:border-blue-600 focus:outline-none min-w-[20%] rounded-[8px] dark:bg-[#1F2022];
 }
 
 .form-textarea {
-  @apply block w-full px-3 py-1.5 text-base h-[400px] font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none;
+  @apply relative flex-auto min-w-0 block w-full p-[20px] pr-[40px] text-base font-normal text-gray-700 dark:bg-[#1F2022] dark:border-[#202020] bg-clip-padding border rounded-[8px] transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none h-[400px] text-[14px] dark:text-[#c5c5c5c5];
 }
 
 .form-input {
-  @apply block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none mb-[20px];
+  @apply relative flex-auto min-w-0 block w-full px-[20px] text-base font-normal text-gray-700 dark:bg-[#1F2022] dark:border-[#202020] bg-clip-padding border rounded-[8px] transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none h-[42px] text-[14px] dark:text-[#c5c5c5c5];
 }
 
 .form-date {
@@ -113,10 +117,14 @@
   @apply rounded;
 }
 
-.form-select .ant-select-clear {
-  display: flex;
+.main .ant-select-selector {
+  @apply dark:bg-[#1F2022] dark:border-[#202020] h-[42px] rounded-[8px];
 }
 
-.form-select .ant-select-selector {
-  @apply rounded;
+.main .ant-select-selector .ant-select-selection-placeholder {
+  @apply dark:text-[#c5c5c5c5] rounded-[8px];
+}
+
+.form-select .ant-select-clear {
+  display: flex;
 }

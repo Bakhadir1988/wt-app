@@ -1,7 +1,7 @@
 import { FaPlus, FaRegEdit, FaTrashRestore } from "react-icons/fa";
 import { MainLayout } from "../../layout/MainLayout";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { removeProject } from "../../features/projects/projectsSlice";
 
 export const ProjectPage = () => {
@@ -11,18 +11,16 @@ export const ProjectPage = () => {
 
   return (
     <MainLayout>
-      <div className="flex items-center justify-end bg-[#fff] px-[20px] py-[10px] rounded-[8px] mb-[20px] border dark:border-[#202020] dark:bg-[#0D0D0D] dark:text-white">
-        {projects.length > 0 && (
-          <h1 className="mr-auto text-[28px]">Список проектов</h1>
-        )}
-        <a href="create/" className="btn-default mb-0">
+      <div className="flex items-center justify-end bg-[#fff] mb-[20px] dark:bg-[#0D0D0D] dark:text-white">
+        <h1 className="mr-auto text-[28px]">Список проектов</h1>
+
+        <Link to="create/" className="btn-default mb-0">
           <div className="icon">
             <FaPlus className="mr-[10px]" fontSize={13} />
           </div>
           Создать проект
-        </a>
+        </Link>
       </div>
-
       {projects.length === 0 && (
         <div className="flex-col items-center justify-center h-full flex rounded-[5px]">
           <div className="flex flex-col justify-center items-center">
@@ -34,7 +32,6 @@ export const ProjectPage = () => {
           </div>
         </div>
       )}
-
       {projects.length > 0 && (
         <>
           <div className="flex mt-[20px] text-[14px] items-center bar-project mb-[7px] min-h-[50px] rounded-[8px] border  px-[15px] py-[10px] bg-white dark:bg-[#1F2022] dark:border-[#202020]">
