@@ -19,8 +19,7 @@
 
 /* ползунок скроллбара */
 ::-webkit-scrollbar-thumb {
-  background-color: #2563eb;
-  border-radius: 5px;
+  @apply bg-[#2563eb] rounded-[5px] dark:bg-[#000000]
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -49,12 +48,24 @@
   @apply bg-[#fff] flex fixed left-0 right-0 ml-[249px] px-[20px] items-center h-[80px] border dark:border-[#202020] dark:bg-[#0D0D0D] dark:text-white;
 }
 
-.aside {
-  @apply bg-[#fff] fixed left-0 top-0 bottom-0 dark:border-[#202020] border dark:bg-[#0D0D0D] w-[250px];
-}
-
 .main {
   @apply bg-[#fff] rounded-[8px] ml-[270px] w-auto h-full mr-[20px] mb-[20px] mt-[100px] p-[20px] border dark:border-[#202020] dark:bg-[#0D0D0D] dark:text-white;
+}
+
+body .main .ant-select-selector {
+  @apply dark:bg-[#1F2022] dark:border-[#202020] flex items-center rounded-[8px] h-[42px];
+}
+
+:where(.css-dev-only-do-not-override-1s3dcof).ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+  @apply dark:bg-[#1F2022] dark:border-[#202020] flex items-center rounded-[8px] h-[42px];
+}
+
+.main .ant-select-selector .ant-select-selection-placeholder {
+  @apply dark:text-[#c5c5c5c5] rounded-[8px];
+}
+
+.aside {
+  @apply bg-[#fff] fixed left-0 top-0 bottom-0 dark:border-[#202020] border dark:bg-[#0D0D0D] w-[250px];
 }
 
 .trans {
@@ -93,10 +104,6 @@
   @apply flex items-center bg-transparent hover:bg-blue-600 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded;
 }
 
-.form-select {
-  @apply appearance-none block text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat transition ease-in-out m-0 focus:text-gray-700 focus:bg-white text-[14px] focus:border-blue-600 focus:outline-none min-w-[20%] rounded-[8px] dark:bg-[#1F2022];
-}
-
 .form-textarea {
   @apply relative flex-auto min-w-0 block w-full p-[20px] pr-[40px] text-base font-normal text-gray-700 dark:bg-[#1F2022] dark:border-[#202020] bg-clip-padding border rounded-[8px] transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none h-[400px] text-[14px] dark:text-[#c5c5c5c5];
 }
@@ -109,6 +116,10 @@
   @apply appearance-none block text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none py-[2px];
 }
 
+.form-select {
+  @apply appearance-none block text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat transition ease-in-out m-0 focus:text-gray-700 focus:bg-white text-[14px] focus:border-blue-600 focus:outline-none min-w-[20%] rounded-[8px] dark:bg-[#1F2022];
+}
+
 .form-select .ant-select-selection-item-remove {
   display: flex;
 }
@@ -117,14 +128,26 @@
   @apply rounded;
 }
 
-.main .ant-select-selector {
-  @apply dark:bg-[#1F2022] dark:border-[#202020] h-[42px] rounded-[8px];
-}
-
-.main .ant-select-selector .ant-select-selection-placeholder {
-  @apply dark:text-[#c5c5c5c5] rounded-[8px];
-}
-
 .form-select .ant-select-clear {
   display: flex;
+}
+
+.ant-select-dropdown {
+  @apply text-gray-700 rounded-[8px] dark:bg-[#1F2022] dark:border-[#202020];
+}
+
+.ant-select-dropdown .ant-select-item {
+  @apply text-gray-700 dark:text-[#c5c5c5c5];
+}
+
+.ant-select-selection-overflow-item .ant-select-selection-item {
+  @apply dark:text-[#c5c5c5c5] dark:bg-[#000];
+}
+
+.ant-select-selection-item {
+  @apply dark:text-[#c5c5c5c5]
+}
+
+.anticon.anticon-close {
+  @apply text-red-700
 }

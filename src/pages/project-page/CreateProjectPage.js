@@ -9,7 +9,7 @@ import ru from "date-fns/locale/ru";
 import locale from "antd/lib/date-picker/locale/ru_RU";
 import { Link } from "react-router-dom";
 
-export const CreateProject = () => {
+export const CreateProjectPage = () => {
   /** id проекта */
   const id = uuidv4();
   /** Список людей */
@@ -80,7 +80,7 @@ export const CreateProject = () => {
             <h1 className="mr-auto text-[28px]">Создание проекта</h1>
           </div>
           <div className="task-content w-full bg-white dark:border-[#202020] dark:bg-[#0D0D0D] rounded">
-            <form action="">
+            <form action="" className="h-[615px]">
               <input
                 value={inputTitle}
                 onChange={(e) => setInputTitle(e.target.value)}
@@ -98,7 +98,7 @@ export const CreateProject = () => {
                   Участники
                 </div>
                 <Select
-                  className="form-select"
+                  className="form-select w-[80px]"
                   mode="multiple"
                   placeholder="Выберите участников"
                   onChange={participantSelect}
@@ -110,7 +110,7 @@ export const CreateProject = () => {
                   Менеджер
                 </div>
                 <Select
-                  className="form-select"
+                  className="form-select w-[80px]"
                   onClear={(e) => setManager(e.target.value)}
                   placeholder="Выберите менеджера"
                   onChange={managerSelect}
@@ -122,7 +122,7 @@ export const CreateProject = () => {
                   Оптимизатор
                 </div>
                 <Select
-                  className="form-select"
+                  className="form-select w-[80px]"
                   placeholder="Выберите оптимизатора"
                   onChange={optimizerSelect}
                   options={users}
@@ -142,7 +142,7 @@ export const CreateProject = () => {
             </form>
           </div>
         </div>
-        <div className="task-button flex items-center w-full pt-[20px] border-t">
+        <div className="task-button flex items-center dark:border-[#202020] mt-[20px] w-full pt-[20px] border-t">
           <Link
             to={`/projects/`}
             onClick={addProjectItem}

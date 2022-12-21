@@ -108,12 +108,15 @@ export const ProjectPage = () => {
                       {status ? status : "Активен"}
                     </div>
                     <div className="w-[42px] mr-[5px] text-center">
-                      <button className="flex group items-center border justify-center w-[42px] h-[42px] bg-[#FAFBFC] hover:bg-[#1B4FE2] hover:border-[#1B4FE2] dark:border-[#202020] dark:bg-[#0D0D0D] dark:hover:bg-[#1B4FE2] mx-auto  rounded-[8px]">
+                      <Link
+                        to={`${id}/edit/`}
+                        className="flex group items-center border justify-center w-[42px] h-[42px] bg-[#FAFBFC] hover:bg-[#1B4FE2] hover:border-[#1B4FE2] dark:border-[#202020] dark:bg-[#0D0D0D] dark:hover:bg-[#1B4FE2] mx-auto  rounded-[8px]"
+                      >
                         <FaRegEdit
                           className="group-hover:text-white group-hover:trans"
                           fontSize={15}
                         />
-                      </button>
+                      </Link>
                     </div>
                     <div className="w-[42px] text-center">
                       <button
