@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { TaskItem } from "../components/task-item/TaskItem";
 import { Modal } from "../modal/Modal";
 import { ModalTask } from "../components/modals/ModalTask";
 import { AiFillFilter, AiOutlinePlus } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { MainLayout } from "../layout/MainLayout";
 import { useParams } from "react-router-dom";
+import { TaskItem } from "../components/task/TaskItem";
 
 export const TaskItemPage = () => {
   const [modalTask, setModalTask] = useState(false);

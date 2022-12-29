@@ -16,7 +16,7 @@ export const TaskItemBar = () => {
       <div className="bar-task-title w-[350px] mr-[20px]">Название</div>
       <div className="bar-task-name flex-1 mr-[20px]">Постановщик</div>
       <div className="bar-task-executor flex-1 mr-[20px]">Исполнитель</div>
-      <div className="bar-task-status flex-1 mr-[20px]">Статаус</div>
+      <div className="bar-task-status flex-1 mr-[20px]">Статус</div>
       <div className="bar-task-date flex-1 mr-[20px]">Дата создания</div>
       <div className="bar-task-date w-[42px] mr-[10px]"></div>
       <div className="bar-task-date w-[42px]"></div>

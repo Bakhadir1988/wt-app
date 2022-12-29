@@ -1,18 +1,16 @@
 import React from "react";
-import { AiFillDelete, AiFillEdit, AiOutlineUser } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { FaRegEdit, FaTrashRestore } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
 import { removeProject } from "../../features/projects/projectsSlice";
 
-export const ProjectItems = () => {
-  const projects = useSelector((state) => state.projects.project);
-
+export const ProjectItem = ({ projects }) => {
   const dispatch = useDispatch();
 
   return (
     <>
-      {projects.length === 0 && (
-        <div className="bg-white flex-col items-center justify-center min-h-[746px] flex rounded-[5px]">
+      {projects.length === 0 ? (
+        <div className="flex-col items-center justify-center h-full flex rounded-[5px]">
           <div className="flex flex-col justify-center items-center">
             <h3 className="text-3xl mb-[20px]">Создайте проект</h3>
             <p className="text-center">
@@ -21,10 +19,9 @@ export const ProjectItems = () => {
             </p>
           </div>
         </div>
-      )}
-      {projects.length > 0 && (
+      ) : (
         <>
-          <div className="flex mt-[20px] items-center bar-project mb-[7px] shadow min-h-[50px] rounded-[5px] border px-[15px] py-[10px] bg-white">
+          <div className="flex mt-[20px] text-[14px] items-center bar-project mb-[7px] min-h-[50px] rounded-[8px] border  px-[15px] py-[10px] bg-white dark:bg-[#1F2022] dark:border-[#202020]">
             <div className="bar-project-title w-[350px] mr-[20px]">
               Название
             </div>
@@ -58,11 +55,11 @@ export const ProjectItems = () => {
                 return (
                   <li
                     key={id}
-                    className="mb-[7px] shadow min-h-[60px] rounded-[5px] border px-[15px] flex items-center py-[10px] bg-white"
+                    className="w-full text-[14px] px-[20px] py-[10px] mb-[5px] dark:bg-[#1F2022] rounded-[8px] flex items-center border dark:border-[#202020]"
                   >
                     <NavLink
-                      className="bar-project-title w-[350px] mr-[20px]"
-                      to={`project/${id}/`}
+                      className="bar-project-title w-[350px] mr-[20px] hover:text-[#1B4FE2]"
+                      to={`/projects/${id}/`}
                     >
                       {name ? name : "-"}
                     </NavLink>
@@ -83,39 +80,40 @@ export const ProjectItems = () => {
                               className="mr-[2px] mb-[2px]"
                               title={participant}
                             >
-                              <AiOutlineUser
-                                color="#2AC764"
-                                fontSize={10}
-                                className={`cursor-pointer ${
-                                  participants?.value.length >= 4
-                                    ? "w-[18px] h-[18px]"
-                                    : "w-[25px] h-[25px]"
-                                } rounded-[100%] border border-green-500 flex items-center justify-center`}
-                              />
+                              {participant}
                             </a>
                           );
                         })}
                     </div>
-                    <div className="bar-project-name flex-1 mr-[20px]">
+                    <div className="flex-1 mr-[20px]">
                       {createDate ? createDate : "-"}
                     </div>
-                    <div className="bar-project-name flex-1 mr-[20px]">
+                    <div className="flex-1 mr-[20px]">
                       {endDate ? endDate : "-"}
                     </div>
-                    <div className="bar-project-name flex-1 mr-[20px] text-green-500">
+                    <div className="flex-1 mr-[20px] text-green-500">
                       {status ? status : "Активен"}
                     </div>
-                    <div className="bar-project-date w-[42px] mr-[10px] text-center">
-                      <button className="flex items-center justify-center bg-blue-600 w-[42px] h-[42px] hover:bg-blue-700 mx-auto text-white font-semibold border border-blue-700 rounded">
-                        <AiFillEdit fontSize={17} />
-                      </button>
+                    <div className="w-[42px] mr-[5px] text-center">
+                      <Link
+                        to={`${id}/edit/`}
+                        className="flex group items-center border justify-center w-[42px] h-[42px] bg-[#FAFBFC] hover:bg-[#1B4FE2] hover:border-[#1B4FE2] dark:border-[#202020] dark:bg-[#0D0D0D] dark:hover:bg-[#1B4FE2] mx-auto  rounded-[8px]"
+                      >
+                        <FaRegEdit
+                          className="group-hover:text-white group-hover:trans"
+                          fontSize={15}
+                        />
+                      </Link>
                     </div>
-                    <div
-                      onClick={() => dispatch(removeProject({ id }))}
-                      className="bar-project-date w-[42px] text-center"
-                    >
-                      <button className="flex items-center justify-center bg-red-600 w-[42px] h-[42px] hover:bg-red-700 mx-auto text-white font-semibold border border-red-700 rounded">
-                        <AiFillDelete fontSize={17} />
+                    <div className="w-[42px] text-center">
+                      <button
+                        onClick={() => dispatch(removeProject({ id }))}
+                        className="flex hover:trans group items-center border justify-center w-[42px] h-[42px] bg-[#FAFBFC] dark:border-[#202020] dark:bg-[#0D0D0D] mx-auto hover:bg-red-700 dark:hover:bg-red-900 rounded-[8px]"
+                      >
+                        <FaTrashRestore
+                          className="group-hover:text-white group-hover:trans"
+                          fontSize={14}
+                        />
                       </button>
                     </div>
                   </li>

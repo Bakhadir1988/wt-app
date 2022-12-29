@@ -1,10 +1,6 @@
 import React from 'react'
-import { MainLayout } from '../../layout/MainLayout'
+import { ProjectForm } from "../../components/project/ProjectForm";
 
 export const EditProjectPage = () => {
-  return (
-    <MainLayout>
-      <div>EditProject</div>
-    </MainLayout>
-  );
+  return <ProjectForm title={"Редактирование проекта"} button={'Сохранить'} />;
 }
